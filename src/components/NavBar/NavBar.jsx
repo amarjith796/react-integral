@@ -157,7 +157,10 @@ const styles = theme => ({
       color: "#40a9ff"
     }
   },
-  tabSelected: {}
+  tabSelected: {},
+  menuselected: {
+    color: "green"
+  }
 });
 class NavBar extends Component {
   constructor(props) {
@@ -223,13 +226,34 @@ class NavBar extends Component {
         open={isMobileMenuOpen}
         onClose={this.handleMobileMenuClose}
       >
-        <MenuItem>
+        <MenuItem
+          component={Link}
+          to="/searchById"
+          classes={{
+            root: classes.menuselected,
+            selected: "true"
+          }}
+        >
           <p>Search By ID</p>
         </MenuItem>
-        <MenuItem>
+        <MenuItem
+          component={Link}
+          to="/landscape"
+          classes={{
+            root: classes.menuselected,
+            selected: "true"
+          }}
+        >
           <p>Landscape</p>
         </MenuItem>
-        <MenuItem>
+        <MenuItem
+          component={Link}
+          to="/realtime"
+          classes={{
+            root: classes.menuselected,
+            selected: "true"
+          }}
+        >
           <p>RealTime Chart </p>
         </MenuItem>
         <MenuItem onClick={this.handleProfileMenuOpen}>

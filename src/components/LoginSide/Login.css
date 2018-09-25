@@ -1,0 +1,30 @@
+.caption {
+  position: relative;
+  left: 0;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+.caption-body {
+  position: relative;
+  left: 0;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+.caption span.border,
+.caption-body span.border {
+  font-weight: bold;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  font-family: "-apple-system", "BlinkMacSystemFont", '"Segoe UI"', "Roboto",
+    '"Helvetica Neue"', "Arial", "sans-serif", '"Apple Color Emoji"',
+    '"Segoe UI Emoji"', '"Segoe UI Symbol"';
+}
+.bg-img1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+    url("../../assets/img/google.png");
+}
