@@ -1,4 +1,4 @@
-import { USER_LOGIN, FORGOT_PASSWORD } from "../actions/usersactions";
+import { USER_LOGIN, FORGOT_PASSWORD, SIGN_UP } from "../actions/usersactions";
 
 const initial_state = {
   users: [
@@ -10,7 +10,8 @@ const initial_state = {
   ],
   login: null,
   usernotfound: false,
-  toemailsuccess: false
+  toemailsuccess: false,
+  usercreated: false
 };
 
 const usersReducers = (state = initial_state, { type, payload }) => {
@@ -34,6 +35,14 @@ const usersReducers = (state = initial_state, { type, payload }) => {
         ...state,
         usernotfound: usernotindata,
         toemailsuccess: !usernotindata
+      };
+    case SIGN_UP:
+      users = [...state.users];
+      users.push(payload);
+      return {
+        ...state,
+        users,
+        usercreated: true
       };
     default:
       return state;

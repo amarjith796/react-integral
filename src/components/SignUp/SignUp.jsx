@@ -9,22 +9,22 @@ import Typography from "@material-ui/core/Typography";
 import LoginSide from "../LoginSide/LoginSide";
 import InputBase from "@material-ui/core/InputBase";
 import { Link } from "react-router-dom";
+import CustomizedSnackbars from "../AlertMessages/Error";
 
 class SignUp extends Component {
-  state = {
-    open: false
+  handleSignUp = e => {
+    e.preventDefault();
+    this.props.userSignUp(
+      this.name.value,
+      this.email.value,
+      this.password.value
+    );
+    this.name.value = "";
+    this.email.value = "";
+    this.password.value = "";
   };
-
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
   render() {
-    const { classes } = this.props;
+    const { classes, users } = this.props;
 
     return (
       <div style={{ overflowX: "hidden", overflowY: "hidden" }}>
@@ -52,9 +52,15 @@ class SignUp extends Component {
                 <Typography variant="caption" align="left">
                   Sign up to create your free account.
                 </Typography>
+                {users.usercreated ? (
+                  <CustomizedSnackbars
+                    message="Thank you! Your account is created"
+                    classname="success"
+                  />
+                ) : null}
                 <form
                   className={classes.form}
-                  onSubmit={e => this.onFormSubmit(e)}
+                  onSubmit={e => this.handleSignUp(e)}
                 >
                   <FormControl margin="normal" required fullWidth>
                     <InputLabel htmlFor="email" shrink>

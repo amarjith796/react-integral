@@ -51,7 +51,10 @@ class ForgotPassword extends Component {
                   track.
                 </Typography>
                 {users.usernotfound ? (
-                  <CustomizedSnackbars message="It Seems this email address is not registered in our database." />
+                  <CustomizedSnackbars
+                    message="Sorry: It Seems this email address is not registered in our database."
+                    classname="error"
+                  />
                 ) : null}
                 <form
                   className={classes.form}

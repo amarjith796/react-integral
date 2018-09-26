@@ -51,7 +51,10 @@ class Login extends Component {
                   Enter your details below
                 </Typography>
                 {users.login === false ? (
-                  <CustomizedSnackbars message="Email Address or Password is incorrect, Please try again." />
+                  <CustomizedSnackbars
+                    message="Email Address or Password is incorrect, Please try again."
+                    classname="error"
+                  />
                 ) : null}
                 <form
                   className={classes.form}

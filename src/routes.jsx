@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Login from "./containers/Login";
 import ForgotPassword from "./containers/ForgotPassword";
 import ForgetPasswordSuccess from "./components/ForgotPassword/ForgetPasswordSuccess";
-import SignUp from "./components/SignUp/SignUp";
+import SignUp from "./containers/SignUp";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 
