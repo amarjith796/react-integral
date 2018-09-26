@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Login from "./containers/Login";
 import ForgotPassword from "./containers/ForgotPassword";
 import ForgetPasswordSuccess from "./components/ForgotPassword/ForgetPasswordSuccess";
+import OrderPage from "./components/OrderPage/OrderPage";
 import SignUp from "./containers/SignUp";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
@@ -17,7 +18,7 @@ const TabContainer = props => {
   return (
     <Typography
       component="div"
-      style={{ padding: 0, position: "relative", top: "70px" }}
+      style={{ padding: 0, position: "relative", top: "65px" }}
     >
       {props.children}
     </Typography>
@@ -28,13 +29,15 @@ TabContainer.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-const Home = props => {
+const Home = ({ component: Component, ...rest }) => {
   if (localStorage.getItem("isloggedIn") === null) {
     return <Redirect to="/login" />;
   }
   return (
     <div>
-      <TabContainer>{props.name}</TabContainer>
+      <TabContainer>
+        <Component {...rest} />
+      </TabContainer>
     </div>
   );
 };
@@ -51,7 +54,7 @@ const routes = [
     path: "/searchById",
     value: 0,
     main: () => {
-      return <Home name="Search By Id" />;
+      return <Home name="Search By Id" component={OrderPage} />;
     }
   },
   {
