@@ -1,0 +1,49 @@
+{
+  "commit": "2b45d75f77b3d86c8cfab3e1090bcc520c37ea74",
+  "pagesAndArtboards": {
+    "495A6649-E7B8-4EEF-B8AF-83C265F23F97": {
+      "name": "Page 1",
+      "artboards": {
+        "9DFDD89E-67E1-4694-9BC2-3B6DA2BB5985": {
+          "name": "Forget Password / Error"
+        },
+        "E2840819-3F25-499B-8023-FFF57C23348E": {
+          "name": "Login 2"
+        },
+        "85D39C23-0C93-4032-8710-30DD15F49AD5": {
+          "name": "Register"
+        },
+        "153BB0B8-0261-47DF-BBB0-97A554715021": {
+          "name": "Forget Password"
+        },
+        "847E9863-02D7-4236-A29C-FA87E2042F9D": {
+          "name": "Forget Password / Error Copy"
+        }
+      }
+    }
+  },
+  "version": 101,
+  "fonts": [
+    "OpenSans-Extrabold",
+    "OpenSans-Semibold",
+    "SFUIText-Light",
+    "OpenSans",
+    "OpenSans-Light"
+  ],
+  "compatibilityVersion": 93,
+  "app": "com.bohemiancoding.sketch3",
+  "autosaved": 0,
+  "variant": "NONAPPSTORE",
+  "created": {
+    "commit": "2b45d75f77b3d86c8cfab3e1090bcc520c37ea74",
+    "appVersion": "49.3",
+    "build": 51167,
+    "app": "com.bohemiancoding.sketch3",
+    "compatibilityVersion": 93,
+    "version": 101,
+    "variant": "NONAPPSTORE"
+  },
+  "saveHistory": ["NONAPPSTORE.51167"],
+  "appVersion": "49.3",
+  "build": 51167
+}

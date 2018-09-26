@@ -12,19 +12,24 @@ const styles = theme => ({
     borderColor: "#fff3cd"
   }
 });
-const message = (
+const Message = props => (
   <Typography variant="caption" align="left">
-    <b>Sorry: </b>
-    It Seems this email address is not registered in our database.
+    <b>Sorry: </b> {props.msg}
   </Typography>
 );
 function CustomizedSnackbars(props) {
-  const { classes } = props;
-  return <SnackbarContent className={classes.snackbar} message={message} />;
+  const { classes, message } = props;
+  return (
+    <SnackbarContent
+      className={classes.snackbar}
+      message={<Message msg={message} />}
+    />
+  );
 }
 
 CustomizedSnackbars.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  message: PropTypes.string
 };
 
 export default withStyles(styles)(CustomizedSnackbars);

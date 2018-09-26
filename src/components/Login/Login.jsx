@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import FormControl from "@material-ui/core/FormControl";
@@ -11,94 +10,20 @@ import LoginSide from "../LoginSide/LoginSide";
 import InputBase from "@material-ui/core/InputBase";
 import Checkbox from "@material-ui/core/Checkbox";
 import { Link } from "react-router-dom";
-// debugger;
-const styles = theme => ({
-  container: {
-    display: "grid",
-    gridTemplateColumns: "repeat(12, 1fr)",
-    gridGap: `${theme.spacing.unit * 3}px`
-  },
-  layout: {
-    width: "auto",
-    display: "block", // Fix IE11 issue.
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-      width: 400,
-      marginLeft: "auto",
-      marginRight: "auto"
-    }
-  },
-  paper: {
-    marginTop: theme.spacing.unit * 8,
-    display: "flex",
-    flexDirection: "column",
-    padding: `${theme.spacing.unit * 3}px ${theme.spacing.unit * 4}px ${theme
-      .spacing.unit * 4}px`
-  },
-  subhead: {
-    marginTop: theme.spacing.unit * 2,
-    color: "dimgray",
-    fontWeight: 400,
-    textAlign: "right",
-    marginRight: "30px"
-  },
-  btn: {
-    borderRadius: "20px"
-  },
-  btnSubmit: {
-    marginTop: theme.spacing.unit * 4,
-    padding: `${theme.spacing.unit * 1}px ${theme.spacing.unit * 5}px ${theme
-      .spacing.unit * 1}px ${theme.spacing.unit * 5}px`
-  },
-  bootstrapRoot: {
-    "label + &": {
-      marginTop: theme.spacing.unit * 3
-    }
-  },
-  bootstrapInput: {
-    borderRadius: 4,
-    backgroundColor: theme.palette.common.white,
-    border: "1px solid #ced4da",
-    fontSize: 16,
-    padding: "10px 12px",
-    transition: theme.transitions.create(["border-color", "box-shadow"]),
-    fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"'
-    ].join(","),
-    "&:focus": {
-      borderColor: "#2196f3",
-      boxShadow: "0 0 0 0.2px rgba(0, 0, 0, 0.87)"
-    }
-  },
-  remember: {
-    marginTop: theme.spacing.unit * 20
-  }
-});
+import CustomizedSnackbars from "../AlertMessages/Error";
+
 class Login extends Component {
   state = { isloggedIn: false };
-  handleLogin = () => {
-    this.setState(
-      {
-        isloggedIn: true
-      },
-      function() {
-        localStorage.setItem("isloggedIn", this.state.isloggedIn);
-      }
-    );
+
+  handleLogin = e => {
+    e.preventDefault();
+    this.props.userLogin(this.email.value, this.password.value);
+    this.email.value = "";
+    this.password.value = "";
+    // localStorage.setItem("isloggedIn", this.state.isloggedIn);
   };
   render() {
-    const { classes } = this.props;
-
+    const { classes, users } = this.props;
     return (
       <div style={{ overflowX: "hidden", overflowY: "hidden" }}>
         <Grid container spacing={24}>
@@ -125,9 +50,12 @@ class Login extends Component {
                 <Typography variant="caption" align="left">
                   Enter your details below
                 </Typography>
+                {users.login === false ? (
+                  <CustomizedSnackbars message="Email Address or Password is incorrect, Please try again." />
+                ) : null}
                 <form
                   className={classes.form}
-                  onSubmit={e => this.onFormSubmit(e)}
+                  onSubmit={e => this.handleLogin(e)}
                 >
                   <FormControl margin="normal" required fullWidth>
                     <InputLabel htmlFor="email" shrink>
@@ -203,4 +131,4 @@ Login.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Login);
+export default Login;

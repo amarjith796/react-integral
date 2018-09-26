@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
-import Login from "./components/Login/Login";
-import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
+import Login from "./containers/Login";
+import ForgotPassword from "./containers/ForgotPassword";
 import ForgetPasswordSuccess from "./components/ForgotPassword/ForgetPasswordSuccess";
 import SignUp from "./components/SignUp/SignUp";
 import Typography from "@material-ui/core/Typography";
@@ -57,29 +57,47 @@ const routes = [
   }
 ];
 
-const AppRouter = () => {
+const AppRouter = props => {
   let current_page = routes.filter(obj => {
     return obj.path === window.location.pathname ? obj.value : 0;
   });
+  let class_props = props;
   if (localStorage.getItem("isloggedIn") === null) {
     return (
       <Router>
         <div>
           <Switch>
-            <Route path="/" exact strict component={Login} />
-            <Route path="/login" exact strict component={Login} />
-            <Route path="/signup" exact strict component={SignUp} />
+            <Route
+              path="/"
+              exact
+              strict
+              render={props => <Login {...class_props} {...props} />}
+            />
+            <Route
+              path="/login"
+              exact
+              strict
+              render={props => <Login {...class_props} {...props} />}
+            />
+            <Route
+              path="/signup"
+              exact
+              strict
+              render={props => <SignUp {...class_props} {...props} />}
+            />
             <Route
               path="/forgotPassword"
               exact
               strict
-              component={ForgotPassword}
+              render={props => <ForgotPassword {...class_props} {...props} />}
             />
             <Route
               path="/emailsuccess"
               exact
               strict
-              component={ForgetPasswordSuccess}
+              render={props => (
+                <ForgetPasswordSuccess {...class_props} {...props} />
+              )}
             />
             <Route
               exact

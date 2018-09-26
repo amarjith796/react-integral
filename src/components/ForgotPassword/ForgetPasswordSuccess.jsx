@@ -1,55 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import LoginSide from "../LoginSide/LoginSide";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
-
 import { Link } from "react-router-dom";
-
-const styles = theme => ({
-  container: {
-    display: "grid",
-    gridTemplateColumns: "repeat(12, 1fr)",
-    gridGap: `${theme.spacing.unit * 3}px`
-  },
-  layout: {
-    width: "auto",
-    display: "block", // Fix IE11 issue.
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-      width: 400,
-      marginLeft: "auto",
-      marginRight: "auto"
-    }
-  },
-  paper: {
-    marginTop: theme.spacing.unit * 8,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: `${theme.spacing.unit * 3}px ${theme.spacing.unit * 4}px ${theme
-      .spacing.unit * 4}px`
-  },
-  subhead: {
-    marginTop: theme.spacing.unit * 2,
-    color: "dimgray",
-    fontWeight: 400,
-    textAlign: "right",
-    marginRight: "30px"
-  },
-  btn: {
-    borderRadius: "20px"
-  },
-  icon: {
-    margin: theme.spacing.unit,
-    fontSize: 100
-  }
-});
 class ForgetPasswordSuccess extends Component {
   render() {
     const { classes } = this.props;
@@ -73,7 +30,11 @@ class ForgetPasswordSuccess extends Component {
               </Button>
             </Typography>
             <main className={classes.layout}>
-              <Paper className={classes.paper} elevation={0}>
+              <Paper
+                className={classes.paper}
+                elevation={0}
+                style={{ alignItems: "center" }}
+              >
                 <EmailOutlinedIcon className={classes.icon} />
                 <Typography variant="headline" align="left">
                   Check your email
@@ -105,4 +66,4 @@ ForgetPasswordSuccess.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ForgetPasswordSuccess);
+export default ForgetPasswordSuccess;
