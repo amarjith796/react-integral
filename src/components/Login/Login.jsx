@@ -9,21 +9,22 @@ import Typography from "@material-ui/core/Typography";
 import LoginSide from "../LoginSide/LoginSide";
 import InputBase from "@material-ui/core/InputBase";
 import Checkbox from "@material-ui/core/Checkbox";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import CustomizedSnackbars from "../AlertMessages/Error";
 
 class Login extends Component {
-  state = { isloggedIn: false };
-
   handleLogin = e => {
     e.preventDefault();
     this.props.userLogin(this.email.value, this.password.value);
     this.email.value = "";
     this.password.value = "";
-    // localStorage.setItem("isloggedIn", this.state.isloggedIn);
   };
   render() {
-    const { classes, users } = this.props;
+    const { classes, users, appLogin } = this.props;
+    if (users.login) {
+      appLogin(users.login);
+      return <Redirect to="/searchById" />;
+    }
     return (
       <div style={{ overflowX: "hidden", overflowY: "hidden" }}>
         <Grid container spacing={24}>

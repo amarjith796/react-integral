@@ -16,7 +16,7 @@ import Tab from "@material-ui/core/Tab";
 import Button from "@material-ui/core/Button";
 import toRenderProps from "recompose/toRenderProps";
 import withState from "recompose/withState";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const WithState = toRenderProps(withState("anchorEl", "updateAnchorEl", null));
 function RenderPropsMenu() {
@@ -91,7 +91,6 @@ const styles = theme => ({
       backgroundColor: fade(theme.palette.common.white, 0.25)
     },
     marginRight: theme.spacing.unit * 2,
-    marginLeft: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing.unit * 3,
@@ -199,6 +198,12 @@ class NavBar extends Component {
     var x = new Date();
     this.setState({ time: x.toUTCString() });
   };
+  _handleLogout = () => {
+    clearInterval(this.timer);
+    localStorage.clear();
+    this.props.appLogin(false);
+    <Redirect to="/login" />;
+  };
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
@@ -215,6 +220,7 @@ class NavBar extends Component {
       >
         <MenuItem onClick={this.handleClose}>Profile</MenuItem>
         <MenuItem onClick={this.handleClose}>My account</MenuItem>
+        <MenuItem onClick={this._handleLogout}>Logout</MenuItem>
       </Menu>
     );
 

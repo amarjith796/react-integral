@@ -22,6 +22,9 @@ const usersReducers = (state = initial_state, { type, payload }) => {
       let userfound = users.users.some(d => {
         return d.email === payload.email && d.password === payload.password;
       });
+      if (userfound) {
+        localStorage.setItem("isloggedIn", userfound);
+      }
       return {
         ...state,
         login: userfound
