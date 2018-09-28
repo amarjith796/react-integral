@@ -1,0 +1,31 @@
+text {
+  fill: #3c92ba;
+  stroke: none;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #3c92ba;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke: none;
+}
+
+.grid line {
+  stroke: #e0e0e0;
+  shape-rendering: crispEdges;
+}
+
+.data-line {
+  fill: none;
+  stroke: #3c92ba;
+  stroke-width: 1px;
+}
+
+.data-circle {
+  fill: none;
+  stroke: #3c92ba;
+}

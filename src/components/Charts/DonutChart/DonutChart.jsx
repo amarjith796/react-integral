@@ -56,7 +56,7 @@ class DonutChart extends Component {
       .append("g")
       .attr(
         "transform",
-        "translate(" + (width - marginLeft) + "," + height / 2 + ")"
+        "translate(" + (width - marginLeft) + "," + (height / 3 + 10) + ")"
       );
 
     var g = svg_g
@@ -119,7 +119,7 @@ class DonutChart extends Component {
     if (legends) {
       var legend_g = svg
         .append("g")
-        .attr("transform", "translate(" + 0 + "," + 0 + ")");
+        .attr("transform", "translate(" + 0 + "," + -10 + ")");
       var legendG = legend_g
         .selectAll(".legend") // note appending it to mySvg and not svg to make positioning easier
         .data(pie(data))
@@ -147,22 +147,22 @@ class DonutChart extends Component {
         .style("font-size", 10)
         .attr("y", 10)
         .attr("x", 11)
-        .on("mouseover", function(d) {
-          d3.select(this.parentNode).style("opacity", "0.5");
+        .on("mouseover", d => {
+          // d3.select(this.parentNode).style("opacity", "0.5");
           d3.select("#" + this.props.id + "_" + d.data.orderid).style(
             "opacity",
             "0.5"
           );
         })
-        .on("mousemove", function(d) {
-          d3.select(this.parentNode).style("opacity", "0.5");
+        .on("mousemove", d => {
+          // d3.select(this.parentNode).style("opacity", "0.5");
           d3.select("#" + this.props.id + "_" + d.data.orderid).style(
             "opacity",
             "0.5"
           );
         })
-        .on("mouseout", function(d) {
-          d3.select(this.parentNode).style("opacity", "1");
+        .on("mouseout", d => {
+          // d3.select(this.parentNode).style("opacity", "1");
           d3.select("#" + this.props.id + "_" + d.data.orderid).style(
             "opacity",
             "1"
